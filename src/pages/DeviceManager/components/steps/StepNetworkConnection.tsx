@@ -64,7 +64,7 @@ const StepNetworkConnection = ({
                 relative text-left p-5 rounded-xl border transition-all duration-200
                 ${
                   isSelected
-                    ? "bg-[#1a2a0d] border-[#05DF72] shadow-[0_0_20px_rgba(189,252,69,0.1)]"
+                    ? "bg-[#1a2a0d] border-[#BDFC45] shadow-[0_0_20px_rgba(189,252,69,0.1)]"
                     : "bg-[#141414] border-[#2a2a2a] hover:border-[#3a3a3a] hover:bg-[#1a1a1a]"
                 }
               `}
@@ -72,7 +72,7 @@ const StepNetworkConnection = ({
               {/* Check mark for selected */}
               {isSelected && (
                 <div className="absolute top-4 right-4">
-                  <Check className="w-5 h-5 text-[#05DF72]" />
+                  <Check className="w-5 h-5 text-[#BDFC45]" />
                 </div>
               )}
 
@@ -91,13 +91,15 @@ const StepNetworkConnection = ({
               </div>
 
               {/* Connection Info */}
-              <h4 className="text-white font-medium mb-1">{option.name}</h4>
-              <p className="text-sm text-[#6b6b6b] mb-4">
+              <h4 className="text-white font-medium mb-1 text-center">
+                {option.name}
+              </h4>
+              <p className="text-sm text-[#6b6b6b] mb-4 text-center">
                 {option.description}
               </p>
 
               {/* Pros */}
-              <div className="space-y-2">
+              <div className="space-y-2 mt-2">
                 {option.pros.map((pro, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#05DF72]" />

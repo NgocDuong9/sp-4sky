@@ -21,7 +21,7 @@ const RankBadge = ({ rank }: { rank: number }) => {
 
   if (isTopThree) {
     return (
-      <span className="w-6 h-6 rounded-full bg-[#05DF7233] flex items-center justify-center text-xs font-semibold text-[#05DF72]">
+      <span className="w-6 h-6 rounded-full bg-[#BDFC4533] flex items-center justify-center text-xs font-semibold text-[#BDFC45]">
         {rank}
       </span>
     );
@@ -40,7 +40,7 @@ const Leaderboard = ({
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-[#05DF72]" />
+          <Trophy className="w-5 h-5 text-[#BDFC45]" />
           <h2 className="text-lg font-bold text-white">Leaderboard</h2>
         </div>
         <button className="flex items-center gap-1 text-xs text-gray-400 hover:text-white transition-colors bg-[#FFFFFF1A] hover:bg-[#333] rounded-[6px] px-3 py-1.5 border border-[#FFFFFF1A]">
@@ -72,11 +72,11 @@ const Leaderboard = ({
               key={user.rank}
               className={`grid hover:bg-[#2a2a2a] grid-cols-[32px_1fr_80px_60px_50px] gap-3 items-center rounded-[6px] px-3 py-1.5 text-sm transition-colors text-[11px] ${
                 index === 0
-                  ? "bg-[#05DF7226]"
+                  ? "bg-[#BDFC4526]"
                   : index === 1
-                  ? "bg-[#05DF721A]"
+                  ? "bg-[#BDFC451A]"
                   : index === 2
-                  ? "bg-[#05DF720D]"
+                  ? "bg-[#BDFC450D]"
                   : "hover:opacity-80 "
               }`}
             >

@@ -55,12 +55,8 @@ const StepPartsChecklist = ({
       <button
         onClick={onToggleHasAllParts}
         className={`
-          w-full p-4 rounded-xl border transition-all duration-200 text-left
-          ${
-            hasAllParts
-              ? "bg-[#1a2a0d] border-[#05DF72]"
-              : "bg-[#141414] border-[#2a2a2a] hover:border-[#3a3a3a]"
-          }
+          w-full p-4 rounded-xl border transition-all duration-200 text-left bg-[#1a2a0d]  border-[#BDFC454D]
+          ${hasAllParts ? "" : " border-[#2a2a2a] hover:border-[#3a3a3a]"}
         `}
       >
         <div className="flex items-start gap-3">
@@ -69,7 +65,7 @@ const StepPartsChecklist = ({
             w-6 h-6 rounded-md border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all
             ${
               hasAllParts
-                ? "bg-[#05DF72] border-[#05DF72]"
+                ? "bg-[#BDFC45] border-[#BDFC45]"
                 : "border-[#4a4a4a] bg-transparent"
             }
           `}
@@ -80,7 +76,7 @@ const StepPartsChecklist = ({
             <p className="text-white font-medium">
               I have all the required parts
             </p>
-            <p className="text-sm text-[#05DF72] mt-1">
+            <p className="text-sm text-[#BDFC45] mt-1">
               Please confirm you have received and verified all components
             </p>
           </div>

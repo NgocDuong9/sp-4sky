@@ -109,7 +109,7 @@ const DeviceManager = () => {
           {/* View Toggle */}
           <div className="flex items-center rounded-lg p-1">
             <button className="p-1.5 rounded-md  text-white">
-              <LayoutGrid className="w-4 h-4 text-[#05DF72]" />
+              <LayoutGrid className="w-4 h-4 text-[#BDFC45]" />
             </button>
             <button className="p-1.5 rounded-md text-[#8B8B8B] hover:text-white transition-colors">
               <List className="w-4 h-4" />
@@ -119,7 +119,7 @@ const DeviceManager = () => {
           {/* Add Sensor Button */}
           <button
             onClick={() => setIsAddSensorModalOpen(true)}
-            className="flex items-center gap-2 rounded-lg bg-[#05DF72] px-4 py-2 text-sm font-medium text-black hover:bg-[#a3e024] transition-colors"
+            className="flex items-center gap-2 rounded-lg bg-[#BDFC45] px-4 py-2 text-sm font-medium text-black hover:bg-[#a3e024] transition-colors"
           >
             <Plus className="w-4 h-4" />
             Add sensor
@@ -134,7 +134,7 @@ const DeviceManager = () => {
       </div>
 
       {/* Sensors Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {sensorsData.map((sensor) => (
           <SensorGridCard key={sensor.id} {...sensor} />
         ))}

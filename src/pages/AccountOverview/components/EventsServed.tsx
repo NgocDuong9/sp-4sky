@@ -17,7 +17,7 @@ const EventsServed = ({
     <div className="rounded-xl bg-[#171D1E] border border-[#FFFFFF0D] p-6 h-full">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-bold text-white">Events Served</h2>
-        <ChartColumn className="w-5 h-5 text-[#05DF72]" />
+        <ChartColumn className="w-5 h-5 text-[#BDFC45]" />
       </div>
 
       <p className="text-sm text-[#FFFFFF80] mb-6">

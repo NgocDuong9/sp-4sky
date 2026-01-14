@@ -41,7 +41,7 @@ const StepSoftwareConfiguration = ({
             type="text"
             value={apiKey}
             onChange={(e) => onApiKeyChange(e.target.value)}
-            className="flex-1 px-4 py-3 bg-[#141414] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b6b6b] focus:outline-none focus:border-[#05DF72] transition-colors font-mono"
+            className="flex-1 px-4 py-3 bg-[#141414] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b6b6b] focus:outline-none focus:border-[#BDFC45] transition-colors font-mono"
             placeholder="Enter your API key"
           />
           <button
@@ -50,7 +50,7 @@ const StepSoftwareConfiguration = ({
             title="Copy API Key"
           >
             {copiedField === "apiKey" ? (
-              <Check className="w-5 h-5 text-[#05DF72]" />
+              <Check className="w-5 h-5 text-[#BDFC45]" />
             ) : (
               <Key className="w-5 h-5 text-[#6b6b6b]" />
             )}
@@ -71,7 +71,7 @@ const StepSoftwareConfiguration = ({
             type="text"
             value={devicePrivateKey}
             onChange={(e) => onDevicePrivateKeyChange(e.target.value)}
-            className="flex-1 px-4 py-3 bg-[#141414] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b6b6b] focus:outline-none focus:border-[#05DF72] transition-colors font-mono"
+            className="flex-1 px-4 py-3 bg-[#141414] border border-[#2a2a2a] rounded-lg text-white placeholder-[#6b6b6b] focus:outline-none focus:border-[#BDFC45] transition-colors font-mono"
             placeholder="Enter device private key"
           />
           <button
@@ -80,7 +80,7 @@ const StepSoftwareConfiguration = ({
             title="Copy Private Key"
           >
             {copiedField === "privateKey" ? (
-              <Check className="w-5 h-5 text-[#05DF72]" />
+              <Check className="w-5 h-5 text-[#BDFC45]" />
             ) : (
               <Key className="w-5 h-5 text-[#6b6b6b]" />
             )}
@@ -92,14 +92,14 @@ const StepSoftwareConfiguration = ({
       </div>
 
       {/* Security Warning */}
-      <div className="bg-[#2a0d0d] border border-[#4a1a1a] rounded-xl p-4">
+      <div className="bg-[#FFDAD6] border border-[#BA1A1A] rounded-xl p-4">
         <div className="flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 text-[#BA1A1A] flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="text-red-400 font-semibold mb-1">
+            <h4 className="text-[#BA1A1A] font-semibold mb-1">
               Security Warning
             </h4>
-            <p className="text-sm text-red-400/80">
+            <p className="text-sm text-[#BA1A1A]">
               Store these credentials securely. Never share your private key
               with anyone. These cannot be recovered if lost.
             </p>
@@ -112,21 +112,17 @@ const StepSoftwareConfiguration = ({
         <h4 className="text-white font-semibold mb-3">Installation Guide</h4>
         <ol className="space-y-2 text-sm text-[#9a9a9a]">
           <li className="flex items-start gap-2">
-            <span className="text-[#6b6b6b]">1.</span>
             Copy the API key and Device Private Key
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#6b6b6b]">2.</span>
             Access your sensor's admin panel (default: 192.168.1.100)
           </li>
-          <li className="flex items-start gap-2">
-            <span className="text-[#6b6b6b]">3.</span>
+          {/* <li className="flex items-start gap-2">
             Navigate to Configuration &gt; Network Settings
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#6b6b6b]">4.</span>
             Paste the credentials in the respective fields
-          </li>
+          </li> */}
         </ol>
       </div>
     </div>

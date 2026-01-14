@@ -5,5 +5,6 @@ export { default as StepPhysicalInstallation } from "./StepPhysicalInstallation"
 export { default as StepSoftwareConfiguration } from "./StepSoftwareConfiguration";
 export { default as StepTestnetTokenSetup } from "./StepTestnetTokenSetup";
 export { default as StepCompletion } from "./StepCompletion";
+export type { ConnectionStatus } from "./StepCompletion";
 
 export type { ConnectionType } from "./StepNetworkConnection";

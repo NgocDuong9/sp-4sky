@@ -1,4 +1,4 @@
-import { X, ChevronLeft, ChevronRight, Check } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   StepSelectSensorType,
@@ -10,6 +10,7 @@ import {
   StepCompletion,
   type ConnectionType,
 } from "./steps";
+import type { ConnectionStatus } from "./steps/StepCompletion";
 
 interface AddSensorModalProps {
   isOpen: boolean;
@@ -42,23 +43,31 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
   const [connectionType, setConnectionType] = useState<ConnectionType>("");
 
   // Step 5: Software Configuration
-  const [apiKey, setApiKey] = useState("0093930200209");
-  const [devicePrivateKey, setDevicePrivateKey] = useState("0093930200209");
+  const [apiKey, setApiKey] = useState("");
+  const [devicePrivateKey, setDevicePrivateKey] = useState("");
 
   // Step 6: Testnet Token Setup
-  const [walletAddress, setWalletAddress] = useState("0.0.25362");
+  const [walletAddress, setWalletAddress] = useState("");
+
+  // Step 7: Connection Status
+  const [connectionStatus, setConnectionStatus] =
+    useState<ConnectionStatus>("loading");
+  const [retryKey, setRetryKey] = useState(0);
 
   // Reset state when modal closes
   useEffect(() => {
     if (!isOpen) {
       setCurrentStep(1);
       setSelectedSensorType(null);
-      setSensorNickname("Sensor_PRG_alpha");
+      setSensorNickname(" ");
       setHasAllParts(false);
-      setConnectionType("wifi");
-      setApiKey("0093930200209");
-      setDevicePrivateKey("0093930200209");
-      setWalletAddress("0.0.25362");
+      setConnectionType("");
+      setApiKey("");
+      setDevicePrivateKey("");
+      setWalletAddress("");
+      setConnectionStatus("loading");
+      setRetryKey(0);
+      // Reset attempt count when modal closes
     }
   }, [isOpen]);
 
@@ -99,15 +108,26 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
   const handleNext = useCallback(() => {
     if (currentStep < TOTAL_STEPS) {
       setCurrentStep((prev) => prev + 1);
-    } else {
-      // Final step - close modal or trigger completion action
+    } else if (connectionStatus === "success") {
       onClose();
     }
-  }, [currentStep, onClose]);
+  }, [currentStep, onClose, connectionStatus]);
+
+  const handleRetry = useCallback(() => {
+    setConnectionStatus("loading");
+    setRetryKey((prev) => prev + 1);
+  }, []);
 
   const handleToggleHasAllParts = useCallback(() => {
     setHasAllParts((prev) => !prev);
   }, []);
+
+  const handleConnectionStatusChange = useCallback(
+    (status: ConnectionStatus) => {
+      setConnectionStatus(status);
+    },
+    []
+  );
 
   // Determine if Next button should be disabled
   const isNextDisabled = useMemo(() => {
@@ -116,18 +136,64 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
         return !selectedSensorType;
       case 2:
         return !hasAllParts;
+      case 3:
+        return !connectionType;
+      case 5:
+        return !apiKey || !devicePrivateKey;
+      case 6:
+        return !walletAddress;
+      case 7:
+        return connectionStatus === "loading";
       default:
         return false;
     }
-  }, [currentStep, selectedSensorType, hasAllParts]);
+  }, [
+    currentStep,
+    selectedSensorType,
+    hasAllParts,
+    connectionType,
+    apiKey,
+    devicePrivateKey,
+    walletAddress,
+    connectionStatus,
+  ]);
+
+  // Get button text and action for step 7
+  const step7ButtonConfig = useMemo(() => {
+    if (currentStep !== TOTAL_STEPS) return null;
+
+    switch (connectionStatus) {
+      case "loading":
+        return {
+          text: "Try Again",
+          icon: null,
+          disabled: true,
+          action: handleRetry,
+        };
+      case "success":
+        return {
+          text: "Finish",
+          icon: null,
+          disabled: false,
+          action: onClose,
+        };
+      case "failed":
+        return {
+          text: "Try Again",
+          icon: <RotateCcw className="w-4 h-4" />,
+          disabled: false,
+          action: handleRetry,
+        };
+    }
+  }, [currentStep, connectionStatus, handleRetry, onClose]);
 
   // Get button text
   const nextButtonText = useMemo(() => {
-    if (currentStep === TOTAL_STEPS) {
-      return "Complete Setup";
+    if (step7ButtonConfig) {
+      return step7ButtonConfig.text;
     }
     return "Next";
-  }, [currentStep]);
+  }, [step7ButtonConfig]);
 
   if (!isOpen) return null;
 
@@ -180,6 +246,7 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
       case 7:
         return (
           <StepCompletion
+            key={retryKey}
             sensorNickname={sensorNickname}
             sensorType={
               selectedSensorType
@@ -187,12 +254,19 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
                 : "Unknown"
             }
             connectionType={connectionType}
+            onStatusChange={handleConnectionStatusChange}
+            setConnectionStatus={setConnectionStatus}
+            connectionStatus={connectionStatus}
           />
         );
       default:
         return null;
     }
   };
+
+  const handleButtonClick = step7ButtonConfig
+    ? step7ButtonConfig.action
+    : handleNext;
 
   return (
     <div
@@ -228,7 +302,7 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
           <div className="px-6 pb-4">
             <div className="h-1 bg-[#1a1a1a] rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#05DF72] rounded-full transition-all duration-300 ease-out"
+                className="h-full bg-[#BDFC45] rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${progressPercentage}%` }}
               />
             </div>
@@ -250,7 +324,7 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
               ${
                 currentStep === 1
                   ? "text-[#3a3a3a] cursor-not-allowed"
-                  : "text-white hover:text-[#05DF72]"
+                  : "text-white hover:text-[#BDFC45]"
               }
             `}
           >
@@ -259,7 +333,7 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
           </button>
 
           <button
-            onClick={handleNext}
+            onClick={handleButtonClick}
             disabled={isNextDisabled}
             className={`
               flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all
@@ -271,8 +345,8 @@ const AddSensorModal = ({ isOpen, onClose }: AddSensorModalProps) => {
             `}
           >
             {nextButtonText}
+            {step7ButtonConfig?.icon}
             {currentStep < TOTAL_STEPS && <ChevronRight className="w-4 h-4" />}
-            {currentStep === TOTAL_STEPS && <Check className="w-4 h-4" />}
           </button>
         </div>
       </div>

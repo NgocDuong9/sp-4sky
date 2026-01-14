@@ -64,12 +64,12 @@ const StepPhysicalInstallation = () => {
       </div>
 
       {/* Safety Note */}
-      <div className="bg-[#1a1a0d] border border-[#3a3a1a] rounded-xl p-4">
+      <div className="bg-[#BDFC451A] border border-[#BDFC451A] rounded-xl p-4">
         <div className="flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 text-[#BDFC45] flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="text-amber-500 font-semibold mb-1">Safety Note</h4>
-            <p className="text-sm text-amber-500/80">
+            <h4 className="text-[#ffffff] font-semibold mb-1">Safety Note</h4>
+            <p className="text-sm text-[#BDFC45]/80">
               Always follow local building codes and regulations. Consider
               hiring a professional installer for rooftop or high-altitude
               installations.

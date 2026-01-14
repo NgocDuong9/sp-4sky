@@ -31,7 +31,7 @@ const SensorGridCard = ({
   const field3Value = sensorId || deviceId || "-";
 
   return (
-    <div className="rounded-xl bg-[#0A0F10] overflow-hidden hover:border-[#BDFC45]/30 transition-colors cursor-pointer group backdrop-blur-[50px]">
+    <div className="rounded-xl bg-[#0A0F10] overflow-hidden hover:border-[#05DF72]/30 transition-colors cursor-pointer group backdrop-blur-[50px]">
       {/* Image */}
       <div className="h-[140px] w-full overflow-hidden bg-gradient-to-br from-[#0a0f10] to-[#1a1f20]">
         <img

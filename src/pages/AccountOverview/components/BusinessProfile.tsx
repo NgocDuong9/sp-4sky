@@ -23,7 +23,7 @@ const BusinessProfile = ({
       <div className="flex flex-col">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-bold text-white">Business Profile</h2>
-          <Building2 className="w-5 h-5 text-[#BDFC45]" />
+          <Building2 className="w-5 h-5 text-[#05DF72]" />
         </div>
 
         <div className="flex items-center gap-4 mb-6">
@@ -35,7 +35,7 @@ const BusinessProfile = ({
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-1 -right-0.5 h-6 w-6 rounded-full bg-[#BDFC45] flex justify-center items-center">
+            <div className="absolute -bottom-1 -right-0.5 h-6 w-6 rounded-full bg-[#05DF72] flex justify-center items-center">
               <Camera className="w-4 h-4 text-black" />
             </div>
           </div>
@@ -70,7 +70,7 @@ const BusinessProfile = ({
         </div>
       </div>
 
-      <button className="mt-6 w-full rounded-[8px] border border-[#BDFC45] bg-transparent py-2.5 text-sm font-medium text-white hover:bg-[#1a1a1a] transition-colors">
+      <button className="mt-6 w-full rounded-[8px] border border-[#05DF72] bg-transparent py-2.5 text-sm font-medium text-white hover:bg-[#1a1a1a] transition-colors">
         Edit Profile
       </button>
     </WrapBox>

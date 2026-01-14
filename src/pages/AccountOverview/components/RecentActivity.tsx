@@ -35,7 +35,7 @@ const RecentActivity = ({ activities }: RecentActivityProps) => {
         {activities.map((activity) => (
           <div key={activity.id} className="flex items-start gap-4 py-3">
             <div
-              className={`flex h-2 w-2 rounded-full bg-[#BDFC45] mt-1.5`}
+              className={`flex h-2 w-2 rounded-full bg-[#05DF72] mt-1.5`}
             ></div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">

@@ -122,7 +122,7 @@ const Sidebar = ({ isCollapsed, onToggleCollapse }: SidebarProps) => {
                       item.disabled
                         ? "cursor-not-allowed opacity-50"
                         : isActive
-                        ? "bg-[#BDFC45] text-[#21005D]"
+                        ? "bg-[#05DF72] text-[#21005D]"
                         : "text-[#ffffff79] hover:bg-[#1a1a1a] hover:text-white"
                     }`
                   }

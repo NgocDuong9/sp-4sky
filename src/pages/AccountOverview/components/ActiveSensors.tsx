@@ -28,7 +28,7 @@ const ActiveSensors = ({ sensors, onAddSensor }: ActiveSensorsProps) => {
         </div>
         <button
           onClick={onAddSensor}
-          className="flex items-center gap-2 rounded-[8px] bg-[#BDFC45] px-4 py-2 text-sm font-medium text-black hover:bg-[#a3e024] transition-colors"
+          className="flex items-center gap-2 rounded-[8px] bg-[#05DF72] px-4 py-2 text-sm font-medium text-black hover:bg-[#a3e024] transition-colors"
         >
           <Plus className="w-4 h-4" />
           Add sensor
